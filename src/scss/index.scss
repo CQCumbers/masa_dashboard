@@ -1,0 +1,121 @@
+@import "node_modules/bootstrap/scss/functions";
+
+// Colors
+$body-bg: #16212F;
+$body-color: #C3EAFF;
+
+$theme-colors: (
+  "dark": #16212F,
+  "light": #3C4856,
+  "primary": #C3EAFF,
+  "white": #FFFFFF,
+);
+
+// Typography
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,500');
+$font-family-sans-serif: 'IBM Plex Mono', monospace;
+$font-weight-normal: 300;
+$font-weight-bold: 500;
+$font-size-base: 0.9rem;
+
+// Bootstrap options
+$enable-rounded: false;
+
+$card-bg: theme-color("dark");
+$card-spacer-y: 0.0rem;
+$card-spacer-x: 0.0rem;
+
+$input-bg: theme-color("dark");
+$input-border-color: theme-color("light");
+$custom-select-indicator-color: theme-color("primary");
+$custom-select-color: theme-color("primary");
+
+$link-hover-decoration: none;
+$link-hover-color: theme-color("white");
+
+$close-color: theme-color("primary");
+$close-text-shadow: none;
+
+.card {
+  user-select: none;
+}
+
+.card-body {
+  overflow-y: auto;
+}
+
+.sortableHelper {
+   z-index: 10;
+}
+
+// react-mosaic styling
+
+.mosaic.mosaic-theme {
+  background: theme-color("dark");
+
+  .mosaic-zero-state {
+    background: theme-color("light");
+  }
+
+  &.mosaic-drop-target,
+  .mosaic-drop-target {
+    .drop-target-container .drop-target {
+      background: rgba(theme-color("light"), 0.5);
+      border: 1px solid theme-color("primary");
+      transition: opacity 100ms;
+    }
+  }
+
+  .mosaic-window,
+  .mosaic-preview {
+    .mosaic-window-toolbar {
+      .mosaic-window-title {
+        color: theme-color("white");
+        text-transform: uppercase;
+        margin-bottom: 1px;
+      }
+      background: theme-color("light");
+      border: 1px solid theme-color("primary");
+    }
+
+    .mosaic-window-title {
+      font-weight: $font-weight-bold;
+      color: theme-color("primary");
+    }
+
+    .mosaic-window-controls {
+      .separator {
+        border-left: 1px solid theme-color("light");
+      }
+    }
+
+    .pt-button {
+      background: theme-color("light");
+      color: theme-color("primary");
+      border: 0;
+      border-left: 1px solid theme-color("primary");
+      font-weight: $font-weight-normal;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .mosaic-window-body {
+      border: 1px solid theme-color("primary");
+      border-top: 0;
+      background: theme-color("dark");
+    }
+
+    .mosaic-window-additional-actions-bar {
+      transition: height 250ms;
+    }
+
+    .mosaic-preview {
+      h4 {
+        color: theme-color("primary");
+      }
+    }
+  }
+}
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
