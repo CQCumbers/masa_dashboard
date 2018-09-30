@@ -12,11 +12,7 @@ class PanelModel {
   constructor(title, telemetry, graphs) {
     this.title = title;
     this.telemetry = telemetry;
-    this.graphs = graphs || [{
-      id: Math.random(),
-      graphType: telemetry.graphTypes[0],
-      sensorType: telemetry.sensors[0]
-    }];
+    this.graphs = graphs || [];
   }
 
   @computed

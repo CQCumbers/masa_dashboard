@@ -1,0 +1,6 @@
+name, units, min, max, warnLow, warnHigh
+Pressure0, psi, 0, 1, 0.1, 0.9
+Pressure1, psi, 0, 1, 0.1, 0.9
+Pressure2, psi, 0, 1, 0.1, 0.9
+Pressure3, psi, 0, 1, 0.1, 0.9
+Pressure4, psi, 0, 1, 0.1, 0.9

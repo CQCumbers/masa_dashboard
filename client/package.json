@@ -1,7 +1,7 @@
 {
-  "name": "masa_dashboard",
+  "name": "masa_dashboard-client",
   "version": "1.0.0",
-  "description": "Monitor avionics data in real time",
+  "description": "Monitor avionics data in real time (client)",
   "scripts": {
     "start": "webpack-dev-server --hot --open",
     "lint": "eslint src",
@@ -38,8 +38,8 @@
     "react-mosaic-component": "^1.1.1",
     "react-sortable-hoc": "^0.8.3",
     "sass-loader": "^7.1.0",
+    "socket.io-client": "^2.1.1",
     "style-loader": "^0.23.0",
-    "victory": "^30.4.0",
-    "worker-timers": "^4.0.51"
+    "victory": "^30.4.0"
   }
 }
