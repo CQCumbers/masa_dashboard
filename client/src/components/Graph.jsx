@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { Line, HorizontalBar, Doughnut } from 'react-chartjs-2';
+import colors from '../scss/index.scss';
 
 
 const LineGraph = observer(({ sensor }) => (
@@ -9,8 +10,8 @@ const LineGraph = observer(({ sensor }) => (
       datasets: [{
         label: sensor.name,
         data: sensor.data.slice(),
-        backgroundColor: '#3C4856',
-        borderColor: '#C3EAFF',
+        backgroundColor: colors.light,
+        borderColor: colors.primary,
         pointRadius: 0,
       }]
     }}
@@ -27,7 +28,7 @@ const BarGraph = observer(({ sensor }) => (
       datasets: [{
         label: sensor.name,
         data: [sensor.lastData.y],
-        backgroundColor: '#C3EAFF',
+        backgroundColor: colors.primary,
       }]
     }}
     options={{

@@ -11,6 +11,13 @@ $theme-colors: (
   "white": #FFFFFF,
 );
 
+:export {
+  dark: theme-color("dark");
+  light: theme-color("light");
+  primary: theme-color("primary");
+  white: theme-color("white");
+}
+
 // Typography
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,500');
 $font-family-sans-serif: 'IBM Plex Mono', monospace;
@@ -50,14 +57,14 @@ $close-text-shadow: none;
 
 // react-mosaic styling
 
-.mosaic.mosaic-theme {
+.mosaic-theme {
   background: theme-color("dark");
 
   .mosaic-zero-state {
     background: theme-color("light");
   }
 
-  &.mosaic-drop-target,
+  .mosaic-drop-target,
   .mosaic-drop-target {
     .drop-target-container .drop-target {
       background: rgba(theme-color("light"), 0.5);
