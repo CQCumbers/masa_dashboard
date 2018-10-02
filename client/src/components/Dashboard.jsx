@@ -5,8 +5,7 @@ import EditableLabel from 'react-inline-editing';
 import Panel, { EditButton } from './Panel';
 
 
-// Workaround for editable panel titles
-
+// Workaround for editable panel titles (MosaicWindow.title should be string)
 const renderPreview = ({ panel }) => (
   <div className="mosaic-preview">
     <div className="mosaic-window-toolbar">
@@ -38,7 +37,7 @@ const Dashboard = observer(({ dashboard }) => (
         ])}
         renderPreview={renderPreview}
       >
-        <Panel panel={dashboard.panels[count]} />
+        <Panel telemetry={dashboard.telemetry} panel={dashboard.panels[count]} />
       </MosaicWindow>
     )}
     value={dashboard.mosaicState}

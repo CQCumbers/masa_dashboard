@@ -13,12 +13,12 @@ export const EditButton = ({ panel }) => (
 );
 
 
-const GraphContainer = observer(({ panel }) => (
+const GraphContainer = observer(({ telemetry, panel }) => (
   <div className='card-body'>
     {panel.graphs.map(graph => (
       <Graph
-        type={graph.graphType}
-        sensor={graph.sensorType}
+        type={telemetry.graphTypes[graph.graphType]}
+        sensor={telemetry.sensors[graph.sensorType]}
         key={`graph-${graph.id}`}
       />
     ))}
@@ -26,10 +26,11 @@ const GraphContainer = observer(({ panel }) => (
 ));
 
 
-const GraphList = SortableContainer(observer(({ panel }) => (
+const GraphList = SortableContainer(observer(({ telemetry, panel }) => (
   <div className='card-body'>
     {panel.graphs.map((graph, index) => (
       <GraphListElement
+        telemetry={telemetry}
         graph={graph}
         onRemove={panel.removeGraph}
         key={`graphList-${graph.id}`}
@@ -40,15 +41,16 @@ const GraphList = SortableContainer(observer(({ panel }) => (
 )));
 
 
-const GraphListElement = SortableElement(({ graph, onRemove }) => (
+const GraphListElement = SortableElement(({ telemetry, graph, onRemove }) => (
   <div className='p-3 border border-light bg-dark'>
     <button className='close' onClick={() => onRemove(graph.id)}><span>&times;</span></button>
-    <strong>{graph.sensorType.name}</strong> {graph.graphType}
+    <strong>{telemetry.sensors[graph.sensorType].name}</strong>
+    {telemetry.graphTypes[graph.graphType]}
   </div>
 ));
 
 
-const GraphInput = observer(({ panel }) => (
+const GraphInput = observer(({ telemetry, panel }) => (
   <div className='card-footer border-top border-primary p-0'>
     <div className='input-group'>
       <select
@@ -56,7 +58,7 @@ const GraphInput = observer(({ panel }) => (
         value={panel.newSensorType}
         onChange={panel.changeSensor}
       >
-        {panel.sensorTypes.map((sensor, index) => (
+        {telemetry.sensors.map((sensor, index) => (
           <option value={index} key={index}>{sensor.name}</option>
         ))}
       </select>
@@ -65,7 +67,7 @@ const GraphInput = observer(({ panel }) => (
         value={panel.newGraphType}
         onChange={panel.changeGraph}
       >
-        {panel.graphTypes.map((graph, index) => (
+        {telemetry.graphTypes.map((graph, index) => (
           <option value={index} key={index}>{graph}</option>
         ))}
       </select>
@@ -77,24 +79,25 @@ const GraphInput = observer(({ panel }) => (
 ));
 
 
-const Panel = observer(({ panel }) => {
+const Panel = observer(({ telemetry, panel }) => {
   if (panel.editMode) {
     return (
       <div className='card border-0 h-100'>
         <GraphList
+          telemetry={telemetry}
           panel={panel}
           onSortEnd={panel.sortGraphs}
           onRemove={panel.removeGraph}
           lockAxis='y' distance={5}
           helperClass='sortableHelper'
         />
-        <GraphInput panel={panel} />
+        <GraphInput telemetry={telemetry} panel={panel} />
       </div>
     );
   } 
   return (
     <div className='card border-0 h-100'>
-      <GraphContainer panel={panel} />
+      <GraphContainer telemetry={telemetry} panel={panel} />
     </div>
   );
 });

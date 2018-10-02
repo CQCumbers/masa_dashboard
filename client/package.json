@@ -25,6 +25,7 @@
     "css-loader": "^1.0.0",
     "jquery": "^3.3.1",
     "mobx": "^5.0.3",
+    "mobx-persist": "^0.4.1",
     "mobx-react": "^5.2.3",
     "mobx-react-devtools": "^6.0.1",
     "node-sass": "^4.9.3",
@@ -39,7 +40,6 @@
     "react-sortable-hoc": "^0.8.3",
     "sass-loader": "^7.1.0",
     "socket.io-client": "^2.1.1",
-    "style-loader": "^0.23.0",
-    "victory": "^30.4.0"
+    "style-loader": "^0.23.0"
   }
 }

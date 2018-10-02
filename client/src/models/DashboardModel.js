@@ -1,19 +1,14 @@
 import { observable, action } from 'mobx';
+import { persist } from 'mobx-persist';
 import PanelModel from './PanelModel';
 import TelemetryModel from './TelemetryModel';
 
 
 class DashboardModel {
-  @observable mosaicState = 0;
-  @observable panels = [];
-  @observable numPanels = 0;
-
-  constructor(panels, telemetry) {
-    this.telemetry = telemetry || new TelemetryModel()//'http://127.0.0.1:5000');
-    this.panels = panels || [new PanelModel('Panel 0', this.telemetry)];
-    window.setInterval(this.telemetry.fakeData, 100);
-    this.numPanels = this.panels.length;
-  }
+  telemetry = new TelemetryModel();
+  @persist('object') @observable mosaicState = 0;
+  @persist('list', PanelModel) @observable panels = [new PanelModel('Panel 0')];
+  @persist @observable numPanels = 1;
 
   @action
   changeMosaic = (newMosaicState) => {
@@ -22,10 +17,9 @@ class DashboardModel {
 
   @action
   createNode = () => {
-    this.panels.push(new PanelModel(`Panel ${this.numPanels}`, this.telemetry));
+    this.panels.push(new PanelModel(`Panel ${this.numPanels}`));
     return this.numPanels++;
   };
 }
-
 
 export default DashboardModel;

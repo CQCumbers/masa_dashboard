@@ -1,7 +1,7 @@
 import { observable, computed, action } from 'mobx';
 
 export default class SensorModel {
-  @observable.shallow data = [];
+  @observable.shallow data = [0];
 
   constructor({ name, units, min, max, warnLow, warnHigh }) {
     this.name = name;

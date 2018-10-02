@@ -1,36 +1,28 @@
 import { observable, computed, action } from 'mobx';
+import { persist } from 'mobx-persist';
 import { arrayMove } from 'react-sortable-hoc';
+import TelemetryModel from './TelemetryModel';
+import SensorModel from './SensorModel';
 
 
 class PanelModel {
-  @observable.shallow graphs = [];
-  @observable title = '';
+  @persist @observable title = '';
+  @persist('list') @observable graphs = [];
   @observable editMode = false;
   @observable newGraphType = 0;
   @observable newSensorType = 0;
 
-  constructor(title, telemetry, graphs) {
+  constructor(title, graphs) {
     this.title = title;
-    this.telemetry = telemetry;
     this.graphs = graphs || [];
-  }
-
-  @computed
-  get graphTypes() {
-    return this.telemetry.graphTypes;
-  }
-
-  @computed
-  get sensorTypes() {
-    return this.telemetry.sensors;
   }
 
   @action
   addGraph = () => {
     this.graphs.push({
       id: Math.random(),
-      graphType: this.graphTypes[this.newGraphType],
-      sensorType: this.sensorTypes[this.newSensorType]
+      graphType: this.newGraphType,
+      sensorType: this.newSensorType
     });
   };
 
