@@ -1,13 +1,13 @@
 import { observable, computed, action } from 'mobx';
 
 export default class SensorModel {
-  @observable.shallow data = [0];
+  @observable.shallow data = [{t: new Date(), y: 0}];
 
   constructor({ name, units, min, max, warnLow, warnHigh }) {
     this.name = name;
     this.units = units;
-    this.range = (min, max);
-    this.warnRange = (warnLow, warnHigh);
+    this.range = [min, max];
+    this.warnRange = [warnLow, warnHigh];
   }
 
   @action
@@ -18,7 +18,12 @@ export default class SensorModel {
 
   @computed
   get lastData() {
-    return this.data[this.data.length - 1];
+    return this.data[this.data.length - 1].y;
+  }
+
+  @computed
+  get lastDataPercent() {
+    return 100 * (this.data[this.data.length - 1].y - this.range[0]) / (this.range[1] - this.range[0]);
   }
 
   @computed

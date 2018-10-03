@@ -9,6 +9,7 @@ $theme-colors: (
   "light": #3C4856,
   "primary": #C3EAFF,
   "white": #FFFFFF,
+  "danger": #FF0000,
 );
 
 :export {
@@ -16,6 +17,7 @@ $theme-colors: (
   light: theme-color("light");
   primary: theme-color("primary");
   white: theme-color("white");
+  danger: theme-color("danger");
 }
 
 // Typography
@@ -52,7 +54,7 @@ $close-text-shadow: none;
 }
 
 .sortableHelper {
-   z-index: 10;
+  z-index: 10;
 }
 
 // react-mosaic styling

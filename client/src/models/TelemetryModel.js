@@ -19,7 +19,7 @@ class TelemetryModel {
   constructor() {
     this.sensors = [new SensorModel({
       name: 'Pressure0', units: 'psi',
-      min: 0, max: 1, warnLow: 0.1, warnHigh: 0.9
+      min: 0, max: 100, warnLow: 15, warnHigh: 85
     })];
   }
 

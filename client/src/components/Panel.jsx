@@ -14,7 +14,7 @@ export const EditButton = ({ panel }) => (
 
 
 const GraphContainer = observer(({ telemetry, panel }) => (
-  <div className='card-body'>
+  <div className='py-1 card-body'>
     {panel.graphs.map(graph => (
       <Graph
         type={telemetry.graphTypes[graph.graphType]}
@@ -44,7 +44,7 @@ const GraphList = SortableContainer(observer(({ telemetry, panel }) => (
 const GraphListElement = SortableElement(({ telemetry, graph, onRemove }) => (
   <div className='p-3 border border-light bg-dark'>
     <button className='close' onClick={() => onRemove(graph.id)}><span>&times;</span></button>
-    <strong>{telemetry.sensors[graph.sensorType].name}</strong>
+    <strong>{telemetry.sensors[graph.sensorType].name} </strong>
     {telemetry.graphTypes[graph.graphType]}
   </div>
 ));
