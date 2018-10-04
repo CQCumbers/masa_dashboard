@@ -4,6 +4,7 @@
   "description": "Monitor avionics data in real time (client)",
   "scripts": {
     "start": "webpack-dev-server --hot --open",
+    "public": "webpack-dev-server --host 0.0.0.0",
     "lint": "eslint src",
     "build": "webpack"
   },
@@ -25,6 +26,7 @@
     "chartjs-plugin-annotation": "^0.5.7",
     "chartjs-plugin-doughnutlabel": "^2.0.1",
     "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
     "jquery": "^3.3.1",
     "mobx": "^5.0.3",
     "mobx-persist": "^0.4.1",

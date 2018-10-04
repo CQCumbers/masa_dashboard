@@ -1,20 +1,19 @@
 import { observable, computed, action } from 'mobx';
 import { persist } from 'mobx-persist';
 import { arrayMove } from 'react-sortable-hoc';
-import TelemetryModel from './TelemetryModel';
-import SensorModel from './SensorModel';
 
 
 class PanelModel {
-  @persist @observable title = '';
+  @persist id = Math.random();
+  @persist @observable title;
   @persist('list') @observable graphs = [];
   @observable editMode = false;
   @observable newGraphType = 0;
   @observable newSensorType = 0;
 
-  constructor(title, graphs) {
+  constructor(title) {
     this.title = title;
-    this.graphs = graphs || [];
+    this.addGraph();
   }
 
   @action

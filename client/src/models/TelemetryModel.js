@@ -5,7 +5,7 @@ import { graphTypes } from '../components/Graph';
 
 
 class TelemetryModel {
-  sensors = [];
+  sensors;
   graphTypes = Object.keys(graphTypes);
 
   //constructor(url) {

@@ -13,7 +13,7 @@ export default class SensorModel {
   @action
   addData(timestamp, value) {
     this.data.push({t: timestamp, y: value * 100});
-    if (this.data.length >= 50) { this.data.shift(); }
+    if (this.data.length >= 600) { this.data.shift(); }
   }
 
   @computed
@@ -24,6 +24,11 @@ export default class SensorModel {
   @computed
   get lastDataPercent() {
     return 100 * (this.data[this.data.length - 1].y - this.range[0]) / (this.range[1] - this.range[0]);
+  }
+
+  @computed
+  get lastTime() {
+    return this.data[this.data.length - 1].t;
   }
 
   @computed

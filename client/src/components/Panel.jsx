@@ -4,13 +4,16 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import Graph from './Graph';
 
 
-export const EditButton = ({ panel }) => (
+export const EditButton = observer(({ panel }) => (
   <button
     title='Edit'
     onClick={panel.changeMode}
-    className='mosaic-default-control pt-button pt-minimal'
-  >Edit</button>
-);
+    className={
+      'mosaic-default-control pt-button pt-minimal'
+      + (panel.editMode ? ' bg-primary text-dark' : '')
+    }
+  >EDIT</button>
+));
 
 
 const GraphContainer = observer(({ telemetry, panel }) => (

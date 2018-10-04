@@ -7,6 +7,8 @@ import DevTools from 'mobx-react-devtools';
 import Dashboard from './components/Dashboard';
 import DashboardModel from './models/DashboardModel';
 
+// show last 5 minutes of data (or adjustable)
+// troubleshoot things not showing up on mobile
 
 const hydrate = create();
 const store = new DashboardModel();
@@ -15,7 +17,6 @@ hydrate('store', store).then(() => {
 
   render(
     <div>
-      <DevTools />
       <Dashboard dashboard={store} />
     </div>,
     document.getElementById('root')
