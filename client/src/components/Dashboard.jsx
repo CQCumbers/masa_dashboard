@@ -22,10 +22,10 @@ const Dashboard = observer(({ dashboard }) => (
     <nav className='nav navbar-dark bg-light py-0 px-3 border-bottom border-primary'>
       <a className='my-0 text-white' href='#'><b>MASA Dashboard</b></a>
       <span className='ml-auto py-0 navbar-text text-primary'><b>
-        {dashboard.telemetry.sensors[0].lastTime.toLocaleTimeString()}
+        {dashboard.telemetry.isLoading ? 'Loading' : dashboard.telemetry.sensors[0].lastTime}
       </b></span>
     </nav>
-    <Mosaic
+    {dashboard.telemetry.isLoading ? 'Loading' : (<Mosaic
       renderTile={(id, path) => {
         const panel = dashboard.panels.find(panel => (panel.id == id));
         return (
@@ -48,7 +48,7 @@ const Dashboard = observer(({ dashboard }) => (
       value={dashboard.mosaicState}
       onChange={dashboard.changeMosaic}
       className='mosaic-theme'
-    />
+    />)}
   </div>
 ));
 

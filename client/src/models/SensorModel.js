@@ -12,8 +12,8 @@ export default class SensorModel {
 
   @action
   addData(timestamp, value) {
-    this.data.push({t: timestamp, y: value * 100});
-    if (this.data.length >= 600) { this.data.shift(); }
+    this.data.push({t: new Date(timestamp), y: value});
+    if (this.data.length >= 100) { this.data.shift(); }
   }
 
   @computed
@@ -28,7 +28,7 @@ export default class SensorModel {
 
   @computed
   get lastTime() {
-    return this.data[this.data.length - 1].t;
+    return this.data[this.data.length - 1].t.toLocaleTimeString();
   }
 
   @computed

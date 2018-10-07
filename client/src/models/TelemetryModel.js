@@ -1,26 +1,21 @@
-import { action } from 'mobx';
-//import io from 'socket.io-client';
+import { observable, action } from 'mobx';
+import io from 'socket.io-client';
 import SensorModel from './SensorModel';
 import { graphTypes } from '../components/Graph';
 
 
 class TelemetryModel {
-  sensors;
+  @observable isLoading = true;
+  sensors = [];
   graphTypes = Object.keys(graphTypes);
 
-  //constructor(url) {
-  //  fetch(url + '/sensors').then(res => res.json()).then(json => {
-  //    this.sensors = json.map(sensor => new SensorModel(sensor));
-  //  });
-  //  this.socket = io.connect(url);
-  //  this.socket.on('update', data => { this.addData(data); });
-  //}
-
   constructor() {
-    this.sensors = [new SensorModel({
-      name: 'Pressure0', units: 'psi',
-      min: 0, max: 100, warnLow: 15, warnHigh: 85
-    })];
+    fetch('/sensors').then(res => res.json()).then(json => {
+      this.sensors = json.map(sensor => new SensorModel(sensor));
+      this.socket = io.connect();
+      this.socket.on('update', data => { this.addData(data); });
+      this.isLoading = false;
+    });
   }
 
   @action

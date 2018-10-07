@@ -21,7 +21,7 @@ app.get('/sensors', (req, res) => {
 });
 
 io.on('connection', socket => {
-  const watcher = chokidar.watch('sensorData.csv');
+  /*const watcher = chokidar.watch('sensorData.csv');
   watcher.on('all', path => {
     papa.parse(fs.createReadStream(path), {
       dynamicTyping: true,
@@ -29,9 +29,15 @@ io.on('connection', socket => {
         socket.emit('update', data[1]);
       }
     });
-  })
+  })*/
+  setInterval(() => {
+    socket.emit('update', [
+      (new Date()).getTime(), Math.random(), Math.random(),
+      Math.random(), Math.random(), Math.random()
+    ]);
+  }, 100);
 });
 
 const port = process.env.PORT || 5000;
-server.listen(port);
+server.listen(port, '0.0.0.0');
 console.log(`Dashboard API listening on ${port}`);

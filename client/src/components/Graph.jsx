@@ -33,7 +33,7 @@ const LineGraph = observer(({ sensor }) => (
             time: {displayFormats: {second: 'hh:mm:ss'}, minUnit: 'second'},
           }],
           yAxes:[{
-            id: 'value', position: 'right',
+            id: 'value',
             ticks: {
               min: sensor.range[0], max: sensor.range[1],
               maxTicksLimit: 5, maxRotation: 0,
