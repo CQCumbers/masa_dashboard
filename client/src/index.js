@@ -1,5 +1,6 @@
 import 'react-mosaic-component/react-mosaic-component.css';
 import './scss/index.scss'; import 'bootstrap';
+import './images/favicon.ico'; import './images/apple-touch-icon.png';
 import React from 'react';
 import { render } from 'react-dom';
 import { create } from 'mobx-persist';
