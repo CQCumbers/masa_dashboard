@@ -4,7 +4,6 @@ import './images/favicon.ico'; import './images/apple-touch-icon.png';
 import React from 'react';
 import { render } from 'react-dom';
 import { create } from 'mobx-persist';
-import DevTools from 'mobx-react-devtools';
 import Dashboard from './components/Dashboard';
 import DashboardModel from './models/DashboardModel';
 

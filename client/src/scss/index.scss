@@ -81,12 +81,9 @@ $close-text-shadow: none;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    .pt-button {
-      background: theme-color("light");
+    button {
       color: theme-color("white");
       border: 1px solid theme-color("primary");
-      font-weight: $font-weight-normal;
-      text-transform: uppercase;
       padding: .375rem .75rem;
     }
   }
@@ -103,14 +100,10 @@ $close-text-shadow: none;
   .mosaic-window,
   .mosaic-preview {
     .mosaic-window-toolbar {
-      .mosaic-window-title {
-        color: theme-color("white");
-        text-transform: uppercase;
-        margin-bottom: 1px;
-      }
-      .pt-button {
-        color: theme-color("primary");
-        background: theme-color("light");
+      button {
+        font-size: 0.7rem;
+        border: 0;
+        border-left: 1px solid theme-color("primary");
       }
       background: theme-color("light");
       border: 1px solid theme-color("primary");
@@ -118,33 +111,15 @@ $close-text-shadow: none;
 
     .mosaic-window-title {
       font-weight: $font-weight-bold;
-      color: theme-color("primary");
-    }
-
-    .mosaic-window-controls {
-      .separator {
-        border-left: 1px solid theme-color("light");
-      }
-    }
-
-    .pt-button {
-      background: theme-color("light");
-      color: theme-color("primary");
-      border: 0;
-      border-left: 1px solid theme-color("primary");
-      font-weight: $font-weight-normal;
-      font-size: 0.7rem;
+      color: theme-color("white");
       text-transform: uppercase;
+      margin-bottom: 1px;
     }
 
     .mosaic-window-body {
+      background: theme-color("dark");
       border: 1px solid theme-color("primary");
       border-top: 0;
-      background: theme-color("dark");
-    }
-
-    .mosaic-window-additional-actions-bar {
-      transition: height 250ms;
     }
 
     .mosaic-preview {
@@ -152,6 +127,13 @@ $close-text-shadow: none;
         color: theme-color("primary");
       }
     }
+  }
+
+  button {
+    background: theme-color("light");
+    color: theme-color("primary");
+    font-weight: $font-weight-normal;
+    text-transform: uppercase;
   }
 }
 
