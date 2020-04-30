@@ -43,7 +43,7 @@
     "chartjs-plugin-doughnutlabel": "^2.0.3",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mobx": "^5.15.4",
     "mobx-persist": "^0.4.1",
     "mobx-react": "^6.1.8",
